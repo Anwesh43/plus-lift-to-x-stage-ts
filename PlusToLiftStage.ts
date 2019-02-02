@@ -189,3 +189,24 @@ class PlusToLift {
         })
     }
 }
+
+class Renderer {
+    ptl : PlusToLift = new PlusToLift()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.ptl.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.ptl.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.ptl.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
