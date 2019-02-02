@@ -7,6 +7,7 @@ const scDiv : number = 0.51
 const strokeFactor : number = 90
 const sizeFactor : number = 2.9
 const foreColor : string = '#0D47A1'
+const delay : number = 25
 
 const maxScale : Function = (scale : number, i : number, n : number) : number => {
     return Math.max(0, scale - i / n)
@@ -128,7 +129,7 @@ class Animator {
     start(cb : Function) {
         if (!this.animated) {
             this.animated = true
-            this.interval = setInterval(cb, 50)
+            this.interval = setInterval(cb, delay)
         }
     }
 
